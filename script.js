@@ -1,4 +1,18 @@
- window.addEventListener("DOMContentLoaded", () => {
+(function () {
+  const form = document.getElementById("login-form");
+  const usernameInput = document.getElementById("username");
+  const passwordInput = document.getElementById("password");
+  const rememberCheckbox = document.getElementById("checkbox");
+  const existingBtn = document.getElementById("existing");
+
+  function credsExist() {
+    return localStorage.getItem("username") && localStorage.getItem("password");
+  }
+
+  function updateExistingVisibility() {
+    existingBtn.style.display = credsExist() ? "block" : "none";
+  }
+   window.addEventListener("DOMContentLoaded", () => {
     // Ensure initial expectations: empty fields & unchecked checkbox
     usernameInput.value = "";
     passwordInput.value = "";
